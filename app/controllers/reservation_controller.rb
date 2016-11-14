@@ -1,18 +1,18 @@
 class ReservationController < ApplicationController
+  before_action :set_reservation, only: [:show, :edit, :update, :destroy]
   def index
     @reservations = Reservation.all
   end
 
   def show
-    @reservations = Reservation.find(params[:id])
   end
 
   def new
-    @reservations = Reservation.new
+    @reservation = Reservation.new
   end
 
   def create
-    @reservations = Reservation.new(user_params)
+    @reservation = Reservation.new(reservation_params)
   end
 
   def edit
@@ -24,6 +24,15 @@ class ReservationController < ApplicationController
   end
 
   def destroy
-    @reservations = Reservation.destroy
+  end
+
+  private
+
+  def set_reservation
+    @reservation = Reservation.find(param[:id])
+  end
+
+  def reservation_params
+    params.require(:reservation).permit(:user, :vehicle, :available, :start_date, :end_start)
   end
 end

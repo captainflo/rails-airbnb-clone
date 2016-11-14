@@ -1,5 +1,9 @@
 class Reservation < ApplicationRecord
   belongs_to: :vehicles
   belongs_to: :user
-  validates :user, :vehicle, :available, :start_date, :end_start
+  validates :user, presence: true
+  validates :vehicle, presence: true
+  validates :available, presence: true
+  validates :start_date, presence: true
+  validates :end_start, presence: true
 end

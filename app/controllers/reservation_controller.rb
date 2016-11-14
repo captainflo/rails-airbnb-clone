@@ -1,17 +1,18 @@
 class ReservationController < ApplicationController
   def index
-    @vehicles = Vehicle.all
+    @reservations = Reservation.all
   end
 
   def show
-    @vehicles = Vehicles.find(params[:id])
+    @reservations = Reservation.find(params[:id])
   end
 
   def new
-    @vehicles = Vehicles.new
+    @reservations = Reservation.new
   end
 
   def create
+    @reservations = Reservation.new(user_params)
   end
 
   def edit
@@ -23,6 +24,6 @@ class ReservationController < ApplicationController
   end
 
   def destroy
-    @vehicles = Vehicle.destroy
+    @reservations = Reservation.destroy
   end
 end

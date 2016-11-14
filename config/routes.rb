@@ -1,18 +1,8 @@
 Rails.application.routes.draw do
-  get 'vehicles/index'
+resources :vehicles
+resources :reservations
 
-  get 'vehicles/show'
-
-  get 'vehicles/new'
-
-  get 'vehicles/create'
-
-  get 'vehicles/edit'
-
-  get 'vehicles/update'
-
-  get 'vehicles/destroy'
-
+  devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

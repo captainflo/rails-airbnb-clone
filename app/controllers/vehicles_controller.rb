@@ -1,7 +1,7 @@
 class VehiclesController < ApplicationController
 before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
   def index
-    @vehicles = Vehicule.all
+    @vehicles = Vehicle.all
   end
 
   def show
@@ -9,11 +9,11 @@ before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
   end
 
   def new
-    @vehicle = Vehicule.new
+    @vehicle = Vehicle.new
   end
 
   def create
-    @vehicle = Vehicule.new(vehicle_params)
+    @vehicle = Vehicle.new(vehicle_params)
     if @vehicle.save
       redirect_to @vehicle
     else
@@ -34,7 +34,7 @@ before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
 private
 
   def set_vehicle
-  @vehicle = Vehicule.find(param[:id])
+  @vehicle = Vehicle.find(param[:id])
   end
 
   def vehicle_params

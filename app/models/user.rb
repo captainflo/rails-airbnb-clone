@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
-         validates :firstname, presence: true
-         validates :lastname, presence: true
+         validates :first_name, presence: true
+         validates :last_name, presence: true
          mount_uploader :avatar, PhotoUploader
 
          def self.find_for_facebook_oauth(auth)

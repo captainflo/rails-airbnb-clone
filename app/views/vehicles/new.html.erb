@@ -1,1 +1,21 @@
-<%= render 'form' %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="text-center">
+      <h2>Please Add your Vehicles you want to rent </h2>
+      <p>Earn money as an Fullcar Owner</p>
+    </div>
+    <button type="button" class="btn folder" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-folder-o" aria-hidden="true"></i></button>
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <%= render 'form' %>
+    </div>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+</div>

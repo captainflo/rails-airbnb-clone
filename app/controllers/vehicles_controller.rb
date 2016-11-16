@@ -11,10 +11,15 @@ before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
 
   def new
     @vehicle = Vehicle.new
+    @categories = Category.all
   end
 
   def create
-    @vehicle = Vehicle.new(vehicle_params)
+    @vehicle = Vehicle.new(marque: vehicle_params[:marque],
+     description: vehicle_params[:description],
+      user: current_user, city: vehicle_params[:city],
+       category: Category.find(vehicle_params[:category].to_i))
+
     if @vehicle.save
       redirect_to @vehicle
     else
@@ -35,11 +40,11 @@ before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
 private
 
   def set_vehicle
-  @vehicle = Vehicle.find(param[:id])
+  @vehicle = Vehicle.find(params[:id])
   end
 
   def vehicle_params
-    params.require(:vehicle).permit(:user, :description, :marque, :category, :rating )
+    params.require(:vehicle).permit(:user, :description, :marque, :category, :city)
   end
 
   def params_search

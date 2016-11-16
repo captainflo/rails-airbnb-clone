@@ -10,5 +10,4 @@ class Vehicle < ApplicationRecord
   validates :category, presence: true
   validates :city, presence: true
 
-
 end

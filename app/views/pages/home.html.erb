@@ -3,11 +3,11 @@
     <h1>Welcome Home</h1>
     <p>Select the vehicle you want to rent</p>
 
-    <%= simple_form_for :search, url: vehicles_path, method: :get do |f| %>
-      <%= f.input :city, placeholder: 'City ?', label: false %>
-      <%= f.input :date, as: :date, label: false %>
-      <%= f.input :category,prompt: "Select category", collection: @categories, input_html: {class: "form-control input-lg"}%>
-      <%= f.button :submit %>
+    <%= simple_form_for :search, url: vehicles_path, method: :get, html: {class: "form-inline"} do |f| %>
+      <%= f.input :city, placeholder: 'City ?', label: false,input_html: {class: "form-control input-lg"} %>
+      <%= f.input :date, as: :date, label: false,input_html: {class: "form-control input-lg"} %>
+      <%= f.input :category, label: false,prompt: "Select category", collection: @categories, input_html: {class: "form-control input-lg"}%>
+      <%= f.button :submit, input_html: {class: "btn btn-primary btn-lg"}%>
     <% end %>
 
   </div>

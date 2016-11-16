@@ -1,26 +1,42 @@
 
 <div class="listing-content" style="display: flex">
-<div class="listing-cars" style="width: 50%">
-<% @vehicles.each do |vehicle| %>
+  <div class="listing-cars" style="width: 50%">
 
-  <h2 style="background-color: grey"><%= vehicle.marque %></h2>
-  <p>
-    <%= vehicle.description %>
-  </p>
-  <p>
-  <%= vehicle.user.first_name %>
-  <%= vehicle.user.last_name %>
 
-  </p>
-  <p>
-  <%= vehicle.city%>
 
-  </p>
 
+
+
+
+  <% @vehicles.each do |vehicle| %>
+  <div class="product">
+    <div class='product-upvote'>
+    </div>
+    <%= image_tag 'poutine.jpg', class: "product-image hidden-xs" %>
+    <div class='product-body'>
+      <h2><%= link_to vehicle.marque, vehicle, class: "cocktail_name" %></h2>
+      <p><%= vehicle.description%></p>
+    </div>
+    <ul class="list-inline product-controls product-controls-hidden hidden-sm hidden-xs">
+      <li><%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_vehicle_path(vehicle.id) %></li>
+      <li><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, vehicle_path(vehicle.id),
+        method: :delete,
+        data: { confirm: "Are you sure?" } %></li>
+        <li><%= link_to '<i class="fa fa-star"></i>'.html_safe, vehicle_path(vehicle.id) %></li>
+    </ul>
+  </div>
 <% end %>
+
 </div>
 
-<div id="map" style="width: 50%; height: 600px; right: 0px;"></div>
+
+
+
+  <div id="map" style="width: 50%; height: 600px; right: 0px;"></div>
+
+</div>
+
+
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
@@ -39,4 +55,3 @@
     });
   <% end %>
 <% end %>
-</div>

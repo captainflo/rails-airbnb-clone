@@ -105,9 +105,24 @@
 .product:hover .product-controls-hidden a { color: #E6E6E6 }
 .product-upvote:hover .product-arrow { border-bottom: 9px solid #5898f1 }
 
-.fa{
-  color: #5898f1;
+
+.fa-car{
+  color: red;
 }
+
+.fa-ship{
+color: blue;
+}
+
+.fa-motorcycle{
+  color: green;
+}
+
+.fa-bus{
+  color: yellow;
+}
+
+
 
 .cocktail_name:hover{
   text-decoration: none;

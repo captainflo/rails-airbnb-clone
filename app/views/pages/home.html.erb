@@ -7,7 +7,8 @@
       <%= f.input :city, placeholder: 'City ?', label: false,input_html: {class: "form-control input-lg"} %>
       <%= f.input :date, as: :date, label: false,input_html: {class: "form-control input-lg"} %>
       <%= f.input :category, label: false,prompt: "Select category", collection: @categories, input_html: {class: "form-control input-lg"}%>
-      <%= f.button :submit, input_html: {class: "btn btn-primary btn-lg"}%>
+
+      <p class="home_button"><%= f.button :submit, input_html: {class: "btn btn-primary btn-lg"}%></p>
     <% end %>
 
   </div>

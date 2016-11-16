@@ -20,6 +20,7 @@ gem 'cloudinary'
 gem 'carrierwave'
 gem 'omniauth-facebook'
 gem "geocoder"
+gem 'faker'
 
 group :development, :test do
   gem 'binding_of_caller'

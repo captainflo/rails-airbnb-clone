@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+10.times do
+
+  Vehicle.create(marque: Faker::Vehicle.manufacture,
+     description: Faker::Lorem.paragraph,
+      user: User.all.sample, city: Faker::Address.city ,
+       category: Category.find(rand(1..4)))
+  sleep(2)
+end

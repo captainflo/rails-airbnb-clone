@@ -11,3 +11,10 @@
   App.cable = ActionCable.createConsumer();
 
 }).call(this);
+
+$('.folder').hover(function(){
+  $(this).html('<i class="fa fa-folder-open-o" aria-hidden="true"></i>');},
+  function(){
+    $(this).html('<i class="fa fa-folder-o" aria-hidden="true"></i>');
+
+  })

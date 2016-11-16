@@ -12,9 +12,11 @@
 
 }).call(this);
 
+$(document).ready(function(){
 $('.folder').hover(function(){
-  $(this).html('<i class="fa fa-folder-open-o" aria-hidden="true"></i>');},
+  $(this).html('<i class="fa fa-folder-open" aria-hidden="true"></i>');},
   function(){
-    $(this).html('<i class="fa fa-folder-o" aria-hidden="true"></i>');
+    $(this).html('<i class="fa fa-folder" aria-hidden="true"></i>');
 
-  })
+  });
+});

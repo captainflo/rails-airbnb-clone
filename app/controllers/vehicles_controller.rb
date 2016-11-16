@@ -1,7 +1,8 @@
 class VehiclesController < ApplicationController
 before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
   def index
-    @vehicles = Vehicle.all
+    @vehicles = Vehicle.near(params_search[:city], 10)
+    @vehicles.where(category: Category.find(params_search[:category].to_i))
   end
 
   def show
@@ -41,4 +42,7 @@ private
     params.require(:vehicle).permit(:user, :description, :marque, :category, :rating )
   end
 
+  def params_search
+    params[:search]
+  end
 end

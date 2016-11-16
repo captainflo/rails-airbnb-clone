@@ -2,7 +2,16 @@ class VehiclesController < ApplicationController
 before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
   def index
     @vehicles = Vehicle.near(params_search[:city], 10)
+
+    @vehicles = @vehicles.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@vehicles) do |flat, marker|
+      marker.lat flat.latitude
+      marker.lng flat.longitude
+    end
+
     @vehicles.where(category: Category.find(params_search[:category].to_i))
+
   end
 
   def show

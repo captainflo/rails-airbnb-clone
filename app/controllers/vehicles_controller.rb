@@ -10,7 +10,7 @@ before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
       marker.lng flat.longitude
     end
 
-    @vehicles.where(category: Category.find(params_search[:category]. to_i))
+    @vehicles.where(category: Category.find(params_search[:category].to_i))
 
   end
 

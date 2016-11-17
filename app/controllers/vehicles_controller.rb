@@ -31,13 +31,18 @@ class VehiclesController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
+    @vehicle.update(param)
+    redirect_to vehicle_path(@vehicle)
   end
 
   def destroy
+    if @vehicle.user == current_user
+    @vehicle.destroy
+  end
+    redirect_to request.referer
   end
 
   private

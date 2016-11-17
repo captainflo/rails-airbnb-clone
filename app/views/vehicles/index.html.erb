@@ -1,29 +1,24 @@
 
 <div class="listing-content" style="display: flex">
   <div class="listing-cars" style="width: 50%">
-
-
-
-
-
-
-
   <% @vehicles.each do |vehicle| %>
   <div class="product">
     <div class='product-upvote'>
     </div>
-    <%= image_tag 'poutine.jpg', class: "product-image hidden-xs" %>
+    <%= image_tag vehicle.photo, class: "product-image hidden-xs" %>
     <div class='product-body'>
       <h2><%= link_to vehicle.marque, vehicle, class: "cocktail_name" %></h2>
       <p><%= vehicle.description%></p>
     </div>
     <ul class="list-inline product-controls product-controls-hidden hidden-sm hidden-xs">
+    <% if vehicle.user == current_user %>
       <li><%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_vehicle_path(vehicle.id) %></li>
       <li><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, vehicle_path(vehicle.id),
         method: :delete,
-        data: { confirm: "Are you sure?" } %></li>
+        data: { confirm:"Are you sure?"} %></li>
+        <% end %>
         <li><%= link_to '<i class="fa fa-star"></i>'.html_safe, vehicle_path(vehicle.id) %></li>
-    </ul>
+      </ul>
   </div>
 <% end %>
 

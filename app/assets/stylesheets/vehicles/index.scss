@@ -1,0 +1,20 @@
+.fa-pencil{
+  color : blue;
+  &:hover{
+    color: red;
+  }
+}
+
+.fa-trash{
+  color : grey;
+  &:hover{
+    color: red;
+  }
+}
+
+.fa-star{
+  color : yellow;
+  &:hover{
+    color: red;
+  }
+}

@@ -35,14 +35,22 @@
         </div>
         <div class="media-section">
           <h2>Reservation</h2>
+          <button class="btn-medium" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Add Ingredient
+    </button>
+          <div class="collapse" id="collapseExample">
+            <div class="well">
+              <%= render 'reservation/form'%>
+            </div>
+          </div>
           <% @reservations.each do |reservation| %>
           <table>
             <tbody>
               <tr>
-                <td><%= reservation.user.first_name+ " " +reservation.user.last_name  %>
+                <td><%= reservation.user&.first_name %> <%= reservation.user&.last_name %>
                 </td>
 
-                <td><%= "😀" * reservation.rating.to_i  %></td>
+                <td><%= "😀" * reservation&.rating.to_i %></td>
               </tr>
             </tbody>
           </table>

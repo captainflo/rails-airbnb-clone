@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-  Category.create(name: "car")
-  Category.create(name: "motorbike")
-  Category.create(name: "boat")
-  Category.create(name: "van")
+  Category.create(name: "Car")
+  Category.create(name: "Motorbike")
+  Category.create(name: "Boat")
+  Category.create(name: "Van")

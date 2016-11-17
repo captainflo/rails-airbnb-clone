@@ -8,5 +8,5 @@ class Vehicle < ApplicationRecord
   validates :description, presence: true
   validates :marque, presence: true
   validates :category, presence: true
-
+  mount_uploader :photo, PhotoUploader
 end

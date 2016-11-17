@@ -3,34 +3,49 @@
 <div class="media">
   <div class="media-body">
     <div class="media-section">
-      <h2>Pictures</h2>
-      <%= cl_image_tag(@vehicle.photo,
-      width: 400, height: 300, crop: :thumb, gravity: :face) %>
+      <h2><% if @vehicle.category.name == "Car" %>
+      <i class="fa fa-car" aria-hidden="true"></i>  <%= @vehicle.marque %>
+      <% elsif @vehicle.category.name == "Motorbike" %>
+      <i class="fa fa-motorcycle" aria-hidden="true"></i>  <%= @vehicle.marque %>
+      <% elsif @vehicle.category.name == "Boat" %>
+      <i class="fa fa-ship" aria-hidden="true"></i> <%= @vehicle.marque %>
+      <% elsif @vehicle.category.name == "Van" %>
+      <i class="fa fa-bus" aria-hidden="true"></i>  <%= @vehicle.marque %>
+      <%end%></h2>
+  <div class="pitcher-show">
+    <%= cl_image_tag @vehicle.photo, class: "photo_show_vehicles img-responsive" %>
+  </div>
+
     </div>
     <div class="media-section">
       <h2>Description</h2>
-      <%= @vehicle.user.first_name %>
-      <%= @vehicle.user.last_name %>
-      <%= @vehicle.marque %>
-      <%= @vehicle.category.name %>
+      <%= @vehicle.description%>
     </div>
   </div>
   <div class="media-aside">
     <div class="media-section">
       <h2>Rating</h2>
+      <div class="star-rating" data-score= <%= @avg_review %>></div>
+    </div>
+    <div class="media-section">
+      <h2>Review</h2>
+      <p></p>
+      <p><i class="fa fa-user" aria-hidden="true"></i>  <%= @vehicle.user.first_name %> <%= @vehicle.user.last_name %>
 
     </div>
     <div class="media-section">
-      <h2>About</h2>
-      <% if @vehicle.category.name = "Car" %>
-      <i class="fa fa-car" aria-hidden="true"></i> : <%= @vehicle.marque %>
-      <% elsif @vehicle.category.name = "Motorbike" %>
-      <i class="fa fa-ship" aria-hidden="true"></i> : <%= @vehicle.marque %>
-      <% elsif @vehicle.category.name = "Boat" %>
-      <i class="fa fa-motorcycle" aria-hidden="true"></i> : <%= @vehicle.marque %>
-      <% elsif @vehicle.category.name = "Van" %>
-      <i class="fa fa-bus" aria-hidden="true"></i> : <%= @vehicle.marque %>
-      <%end%>
+      <h2>Reservation</h2>
+      
     </div>
   </div>
 </div>
+
+<script>
+    $('.star-rating').raty({
+      path: '/assets/',
+      readOnly: true,
+      score: function() {
+            return $(this).attr('data-score');
+    }
+  });
+</script>

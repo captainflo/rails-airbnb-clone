@@ -24,11 +24,8 @@ before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
   end
 
   def create
-    @vehicle = Vehicle.new(marque: vehicle_params[:marque],
-     description: vehicle_params[:description],
-      user: current_user, city: vehicle_params[:city],
-       category: Category.find(vehicle_params[:category].to_i))
-
+    @vehicle = Vehicle.new(vehicle_params)
+    Cloudinary::Uploader.upload(vehicle_params[:photo])
     if @vehicle.save
       redirect_to @vehicle
     else
@@ -52,8 +49,16 @@ private
   @vehicle = Vehicle.find(params[:id])
   end
 
+  def param
+    params.require(:vehicle).permit(:user, :description, :marque, :category, :city, :photo, :photo_cache)
+  end
+
   def vehicle_params
-    params.require(:vehicle).permit(:user, :description, :marque, :category, :city)
+    {marque: param[:marque],
+     description: param[:description],
+      user: current_user, city: param[:city],
+       category: Category.find(param[:category].to_i),
+       photo: param[:photo]}
   end
 
   def params_search

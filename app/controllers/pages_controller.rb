@@ -4,6 +4,9 @@ class PagesController < ApplicationController
   def home
     @vehicle = Vehicle.new
     @categories = Category.all
+    @vehicle_one = Vehicle.all.sample
+    @vehicle_two = Vehicle.all.sample
+    @vehicle_three = Vehicle.all.sample
   end
 
 end

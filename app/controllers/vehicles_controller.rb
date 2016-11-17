@@ -12,7 +12,7 @@ class VehiclesController < ApplicationController
   end
 
   def show
-
+    @reservations = @vehicle.reservations
   end
 
   def new

@@ -4,6 +4,6 @@ class PagesController < ApplicationController
   def home
     @vehicle = Vehicle.new
     @categories = Category.all
+    @vehicles = Vehicle.all
   end
-
 end

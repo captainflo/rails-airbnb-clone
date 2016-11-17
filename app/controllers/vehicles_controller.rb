@@ -1,17 +1,14 @@
 class VehiclesController < ApplicationController
-before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
+  before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-    @vehicles = Vehicle.near(params_search[:city], 10)
-
-    @vehicles = @vehicles.where.not(latitude: nil, longitude: nil)
+    @vehicles = params_search[:city].blank? ? Vehicle.all : Vehicle.near(params_search[:city], 10)
+    @vehicles = params_search[:category].to_i == 0 ? @vehicles : @vehicles.where(category: Category.find(params_search[:category].to_i))
 
     @hash = Gmaps4rails.build_markers(@vehicles) do |flat, marker|
       marker.lat flat.latitude
       marker.lng flat.longitude
     end
-
-    @vehicles.where(category: Category.find(params_search[:category].to_i))
-
   end
 
   def show
@@ -43,10 +40,10 @@ before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
   def destroy
   end
 
-private
+  private
 
   def set_vehicle
-  @vehicle = Vehicle.find(params[:id])
+    @vehicle = Vehicle.find(params[:id])
   end
 
   def param
@@ -56,12 +53,12 @@ private
   def vehicle_params
     {marque: param[:marque],
      description: param[:description],
-      user: current_user, city: param[:city],
-       category: Category.find(param[:category].to_i),
-       photo: param[:photo]}
-  end
+     user: current_user, city: param[:city],
+     category: Category.find(param[:category].to_i),
+     photo: param[:photo]}
+   end
 
-  def params_search
+   def params_search
     params[:search]
   end
 end

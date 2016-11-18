@@ -33,7 +33,7 @@
         <p><i class="fa fa-phone" aria-hidden="true"></i>  <%= @vehicle.user.phone_number %></p>
         <p><div class="star-rating" data-score= <%= @avg_review %>></div></p>
       </div>
-
+      <hr>
       <div class="media-section">
         <h2>Reservation</h2>
         <%= render 'reservation/form'%>
@@ -41,16 +41,16 @@
         <h2><%= pluralize @vehicle.reviews.count , "Review" %></h2>
         <%= render 'reviews/form' %>
       </div>
-
+      <div class="review_post">
       <% @vehicle.reviews.each do |review| %>
-        <% if review.persisted? %>
+        <% if review.persisted?  %>
+        <%= image_tag review.user.avatar, class: "avatar-large" %>  
           <p><%= review.content%></p>
           <div class="star-rating" data-score="<%= review.rating %>" ></div>
           <hr>
         <% end %>
       <% end %>
+      </div>
     </div>
   </div>
 </div>
-
-

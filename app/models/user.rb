@@ -9,6 +9,8 @@ class User < ApplicationRecord
   mount_uploader :avatar, PhotoUploader
   after_create :send_welcome_email
 
+  has_many :reservations
+
 
   def self.find_for_facebook_oauth(auth)
    user_params = auth.to_h.slice(:provider, :uid)

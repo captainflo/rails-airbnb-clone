@@ -14,6 +14,7 @@ class ReservationsController < ApplicationController
   end
 
   def create
+
     @reservation = @vehicle.reservations.new(reservation_params)
     if @reservation.save
       redirect_to @vehicle
@@ -41,10 +42,23 @@ class ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:user, :vehicle, :available, :start_date, :end_start)
+    params.require(:reservation).permit(:user, :vehicle, :available, :start_date, :end_date)
   end
 
   def set_vehicle
     @vehicle = Vehicle.find(params[:vehicle_id])
+  end
+
+  def range_params
+    start_year = reservation_params["start_date(1i)"].to_i
+    start_month = reservation_params["start_date(2i)"].to_i
+    start_day = reservation_params["start_date(3i)"].to_i
+    end_year = reservation_params["end_date(1i)"].to_i
+    end_month = reservation_params["end_date(2i)"].to_i
+    end_day = reservation_params["end_date(3i)"].to_i
+    st_date = Date.new(start_year,start_month,start_day).to_i
+    en_date = Date.new(end_year,end_month,end_day).to_i
+
+    range_date = [st_date..en_date]
   end
 end

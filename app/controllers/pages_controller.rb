@@ -10,4 +10,8 @@ class PagesController < ApplicationController
     @vehicle_three = Vehicle.all.sample
   end
 
+  def dashboard
+
+  end
+
 end

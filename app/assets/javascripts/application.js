@@ -6,6 +6,11 @@
 //= require underscore
 //= require gmaps/google
 
+$('#star-rating').raty({
+  path: '/assets/',
+  scoreName: 'review[rating]'
+});
+
 $('.star-rating').raty({
   path: '/assets/',
   readOnly: true,

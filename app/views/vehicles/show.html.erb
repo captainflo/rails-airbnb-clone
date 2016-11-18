@@ -2,6 +2,7 @@
 
 <div class="media">
   <div class="media-body">
+
     <div class="media-section">
       <h2><% if @vehicle.category.name == "Car" %>
         <i class="fa fa-car" aria-hidden="true"></i>  <%= @vehicle.marque %>
@@ -17,36 +18,39 @@
         </div>
 
       </div>
+
       <div class="media-section">
         <h2>Description</h2>
         <%= @vehicle.description%>
       </div>
     </div>
     <div class="media-aside">
+
       <div class="media-section">
         <p><%= image_tag @vehicle.user.avatar, class: "avatar-large" %></p>
         <p><i class="fa fa-user" aria-hidden="true"></i>  <%= @vehicle.user.first_name %> <%= @vehicle.user.last_name %></p>
         <p><i class="fa fa-envelope-o" aria-hidden="true"></i>  <%= @vehicle.user.email %></p>
         <p><i class="fa fa-phone" aria-hidden="true"></i>  <%= @vehicle.user.phone_number %></p>
         <p><div class="star-rating" data-score= <%= @avg_review %>></div></p>
-        </div>
-        <div class="media-section">
-          <h2>Reservation</h2>
-              <%= render 'reservation/form'%>
-          <hr>
-          <h2>Reviews</h2>
-          <%= render 'reviews/form' %>
-
-          </div>
-          <% @vehicle.reviews.each do |review| %>
-                <% if review.persisted? %>
-                  <p><%= review.content%></p>
-                  <div class="star-rating" data-score="<%= review.rating.to_i %>" ></div>
-                  <hr>
-                <% end %>
-              <% end %>
-        </div>
       </div>
+
+      <div class="media-section">
+        <h2>Reservation</h2>
+        <%= render 'reservation/form'%>
+        <hr>
+        <h2><%= pluralize @vehicle.reviews.count , "Review" %></h2>
+        <%= render 'reviews/form' %>
+      </div>
+
+      <% @vehicle.reviews.each do |review| %>
+        <% if review.persisted? %>
+          <p><%= review.content%></p>
+          <div class="star-rating" data-score="<%= review.rating %>" ></div>
+          <hr>
+        <% end %>
+      <% end %>
     </div>
+  </div>
+</div>
 
 

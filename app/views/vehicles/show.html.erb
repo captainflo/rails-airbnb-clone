@@ -24,38 +24,27 @@
     </div>
     <div class="media-aside">
       <div class="media-section">
-        <h2>Rating</h2>
-        <div class="star-rating" data-score= <%= @avg_review %>></div>
-      </div>
-      <div class="media-section">
-        <h2>Review</h2>
-        <p></p>
-        <p><i class="fa fa-user" aria-hidden="true"></i>  <%= @vehicle.user.first_name %> <%= @vehicle.user.last_name %>
-
+        <p><%= image_tag @vehicle.user.avatar, class: "avatar-large" %></p>
+        <p><i class="fa fa-user" aria-hidden="true"></i>  <%= @vehicle.user.first_name %> <%= @vehicle.user.last_name %></p>
+        <p><i class="fa fa-envelope-o" aria-hidden="true"></i>  <%= @vehicle.user.email %></p>
+        <p><i class="fa fa-phone" aria-hidden="true"></i>  <%= @vehicle.user.phone_number %></p>
+        <p><div class="star-rating" data-score= <%= @avg_review %>></div></p>
         </div>
         <div class="media-section">
           <h2>Reservation</h2>
-          <button class="btn-medium" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      Add Ingredient
-    </button>
-          <div class="collapse" id="collapseExample">
-            <div class="well">
               <%= render 'reservation/form'%>
-            </div>
+          <hr>
+          <h2>Reviews</h2>
+          <%= render 'reviews/form' %>
+
           </div>
-          <% @reservations.each do |reservation| %>
-          <table>
-            <tbody>
-              <tr>
-                <td><%= reservation.user&.first_name %> <%= reservation.user&.last_name %>
-                </td>
-
-                <td><%= "😀" * reservation&.rating.to_i %></td>
-              </tr>
-            </tbody>
-          </table>
-
-          <% end %>
+          <% @vehicle.reviews.each do |review| %>
+                <% if review.persisted? %>
+                  <p><%= review.content%></p>
+                  <div class="star-rating" data-score= <%= review.rating %> ></div>
+                  <hr>
+                <% end %>
+              <% end %>
         </div>
       </div>
     </div>

@@ -21,6 +21,7 @@ gem 'carrierwave'
 gem 'omniauth-facebook'
 gem "geocoder"
 gem 'faker'
+gem 'turbolinks'
 
 group :development, :test do
   gem 'binding_of_caller'

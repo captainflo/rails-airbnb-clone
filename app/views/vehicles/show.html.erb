@@ -41,7 +41,7 @@
           <% @vehicle.reviews.each do |review| %>
                 <% if review.persisted? %>
                   <p><%= review.content%></p>
-                  <div class="star-rating" data-score= <%= review.rating %> ></div>
+                  <div class="star-rating" data-score="<%= review.rating.to_i %>" ></div>
                   <hr>
                 <% end %>
               <% end %>
@@ -49,12 +49,4 @@
       </div>
     </div>
 
-    <script>
-      $('.star-rating').raty({
-        path: '/assets/',
-        readOnly: true,
-        score: function() {
-          return $(this).attr('data-score');
-        }
-      });
-    </script>
+

@@ -36,7 +36,7 @@
   </div>
   <div class="container">
     <div class="row">
-      <% current_user.reservations[1..4].each do |reservation| %>
+      <% current_user.reservations.first(5).each do |reservation| %>
       <div class="col-xs-12 col-md-4 card_marge">
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= Vehicle.first.photo %>');">
           <div class="card-category"><%= reservation.user.first_name%> <%= reservation.user.last_name %></div>

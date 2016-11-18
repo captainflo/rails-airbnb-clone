@@ -49,40 +49,11 @@
     <div class="row">
       <h1 class='text-center'>Discover the Mov'bnb selection </h1>
       <hr>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= @vehicle_one.photo %>');">
-          <div class="card-category"><%= @vehicle_one.user.first_name%></div>
-          
-          <div class="card-description">
-            <h2><%= @vehicle_one.marque %> </h2>
-            <p><%= @vehicle_one.description%></p>
-          </div>
-          <%= image_tag @vehicle_one.user.avatar, class:"card-user avatar-large" %>
-          <%= link_to '', @vehicle_one, class: "card-link" %>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= @vehicle_two.photo %>');">
-          <div class="card-category"><%= @vehicle_two.user.first_name%></div>
-          <div class="card-description">
-            <h2><%= @vehicle_two.marque %> </h2>
-            <p><%= @vehicle_two.description%></p>
-          </div>
-          <%= image_tag @vehicle_two.user.avatar, class:"card-user avatar-large" %>
-          <%= link_to '', @vehicle_two, class: "card-link" %>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= @vehicle_three.photo %>');">
-          <div class="card-category"><%= @vehicle_three.user.first_name%></div>
-          <div class="card-description">
-            <h2><%= @vehicle_three.marque %> </h2>
-            <p><%= @vehicle_three.description%></p>
-          </div>
-          <%= image_tag @vehicle_three.user.avatar, class:"card-user avatar-large" %>
-          <%= link_to '', @vehicle_three, class: "card-link" %>
-        </div>
-      </div>
+
+      <%= render 'card', vehicle: @vehicle_one %>
+      <%= render 'card', vehicle: @vehicle_two %>
+      <%= render 'card', vehicle: @vehicle_three %>
+
     </div>
   </div>
 </div>

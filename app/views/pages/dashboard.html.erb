@@ -1,0 +1,10 @@
+<h1><%= image_tag current_user.avatar, class: "avatar-large" %><%= "#{current_user.first_name} #{current_user.last_name}" %></h1>
+<ul>
+  <% current_user.reservations.each do |reservation| %>
+    <li><%= reservation.vehicle.marque %></li>
+    <li><%= reservation.start_date %> -- <%= reservation.end_date %></li>
+    <li><%= reservation.vehicle.user.first_name %></li>
+    <li><%= reservation.vehicle.user.last_name %></li>
+  <% end %>
+</ul>
+<%= current_user.reservations.count %>

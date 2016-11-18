@@ -25,7 +25,7 @@ end
     {"Renault" => "http://images.caradisiac.com/logos-ref/gamme/gamme--renault-twingo/S5-gamme--renault-twingo.jpg" },
     {"Peugeot" => "http://www.telegraph.co.uk/content/dam/motoring2/2015/12/03/1-peugeot-108-main-image-xlarge_trans++ZgEkZX3M936N5BQK4Va8RQJ6Ra64K3tAxfZq0dvIBJw.jpg" },
     {"Alfa" => "http://www.largus.fr/images/images/alfa-giulia-quadrifoglio-09.jpg" },
-    {"Porcshe" => "http://www.telegraph.co.uk/cars/images/2016/01/09/Porsche-Boxster-Spyder-front-xlarge_trans%2B%2BB1FoUxnpzDgOvWx5yBOTWenjwzLTge-EHCkJ66RZ6Cg.jpg" },
+    {"Porsche" => "http://www.telegraph.co.uk/cars/images/2016/01/09/Porsche-Boxster-Spyder-front-xlarge_trans%2B%2BB1FoUxnpzDgOvWx5yBOTWenjwzLTge-EHCkJ66RZ6Cg.jpg" },
     ].sample
     vehicle = Vehicle.new(marque: vec.keys.first ,
      description: Faker::Lorem.paragraph, user: User.all.sample,

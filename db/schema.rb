@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117212655) do
+ActiveRecord::Schema.define(version: 20161118111521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20161117212655) do
     t.integer  "vehicle_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
     t.index ["vehicle_id"], name: "index_reviews_on_vehicle_id", using: :btree
   end
 
@@ -83,5 +85,6 @@ ActiveRecord::Schema.define(version: 20161117212655) do
     t.index ["user_id"], name: "index_vehicles_on_user_id", using: :btree
   end
 
+  add_foreign_key "reviews", "users"
   add_foreign_key "reviews", "vehicles"
 end

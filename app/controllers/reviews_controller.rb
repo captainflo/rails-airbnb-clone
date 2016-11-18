@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = @vehicle.reviews.build(review_params)
+    @review.user = current_user
     if @review.save
     redirect_to vehicle_path(@vehicle.id)
     else

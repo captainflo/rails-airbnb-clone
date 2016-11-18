@@ -11,7 +11,11 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-
+    @selfreserv = []
+    Reservation.all.each do |res|
+      @selfreserv << res  if res.vehicle.user == current_user
+    end
+    
   end
 
 end

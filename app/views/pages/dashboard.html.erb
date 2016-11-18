@@ -1,10 +1,56 @@
+<div class="text-center">
 <h1><%= image_tag current_user.avatar, class: "avatar-large" %><%= "#{current_user.first_name} #{current_user.last_name}" %></h1>
-<ul>
-  <% current_user.reservations.each do |reservation| %>
-    <li><%= reservation.vehicle.marque %></li>
-    <li><%= reservation.start_date %> -- <%= reservation.end_date %></li>
-    <li><%= reservation.vehicle.user.first_name %></li>
-    <li><%= reservation.vehicle.user.last_name %></li>
-  <% end %>
-</ul>
-<%= current_user.reservations.count %>
+</div>
+
+<div id="dashboard">
+  <div class="text-center">
+    <h1 class="count"><%= current_user.reservations.count %></h1>
+  </div>
+</div>
+<div class="text-center">
+  <h1>Reservations</h1>
+</div>
+<div class="container">
+  <div class="row">
+    <% current_user.reservations.each do |reservation| %>
+    <div class="col-xs-12 col-md-4 card_marge">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= reservation.vehicle.photo %>');">
+        <div class="card-category"><%= reservation.vehicle.user.first_name%> <%= reservation.vehicle.user.last_name %></div>
+        <div class="card-description">
+        <h2><%= reservation.vehicle.marque %> </h2>
+        <p><%= reservation.start_date %> -- <%= reservation.end_date %></p>
+        <div class="star-rating" data-score="<%= reservation.rating %>" ></div>
+        <p><%= reservation.vehicle.description[0..50] %></p>
+        </div>
+        <%= image_tag reservation.vehicle.user.avatar, class:"card-user avatar-large" %>
+        <%= link_to '', reservation.vehicle, class: "card-link" %>
+        </div>
+
+        </div>
+        <% end%>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <h1>Reservations of your vehicles</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <% current_user.reservations[1..4].each do |reservation| %>
+      <div class="col-xs-12 col-md-4 card_marge">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= Vehicle.first.photo %>');">
+          <div class="card-category"><%= reservation.user.first_name%> <%= reservation.user.last_name %></div>
+          <div class="card-description">
+          <h2><%= Vehicle.first.marque %> </h2>
+          <p><%= reservation.start_date %> -- <%= reservation.end_date %></p>
+          <p><div class="star-rating" data-score="<%= reservation.rating %>" ></div></p>
+          <p><%= reservation.vehicle.description[0..50] %></p>
+          </div>
+          <%= image_tag current_user.avatar, class:"card-user avatar-large" %>
+          <%= link_to '', Vehicle.first, class: "card-link" %>
+          </div>
+
+          </div>
+          <% end%>
+      </div>
+    </div>
